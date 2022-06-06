@@ -6,26 +6,16 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="216264b3-a258-4e66-9c7e-c2f25653a755" name="默认更改列表" comment="默认更改列表">
-      <change afterPath="$PROJECT_DIR$/Multivariate-SingleStep-LSTM.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/daily.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/LSTM-Load-Forecasting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LSTM-Load-Forecasting.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMAlgorithms/Multivariate-SingleStep-LSTM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSTMAlgorithms/Multivariate-SingleStep-LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/Multivariate-SingleStep-LSTM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/args.py" beforeDir="false" afterPath="$PROJECT_DIR$/args.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Multivariate-SingleStep-LSTM.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/Multivariate-SingleStep-LSTM.pkl" afterDir="false" />
@@ -422,7 +412,7 @@
       <workItem from="1654308327215" duration="220000" />
       <workItem from="1654308569113" duration="4581000" />
       <workItem from="1654423455164" duration="1281000" />
-      <workItem from="1654482324823" duration="5804000" />
+      <workItem from="1654482324823" duration="6160000" />
     </task>
     <servers />
   </component>
