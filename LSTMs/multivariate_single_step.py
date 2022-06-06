@@ -13,11 +13,14 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
+
 from args import ms_args_parser
 from util import train, test
 
+
 path = os.getcwd()
 LSTM_PATH = path + '/models/multivariate_single_step.pkl'
+
 
 if __name__ == '__main__':
     args = ms_args_parser()
