@@ -7,8 +7,11 @@
 """
 import os
 import random
+import pdb
+import datetime
 
 import numpy as np
+from numpy import nan as NaN
 import pandas as pd
 import torch
 from torch.utils.data import Dataset, DataLoader
@@ -25,15 +28,26 @@ def setup_seed(seed):
     torch.backends.cudnn.deterministic = True
 
 
+# 函数统计每行空值，数量超过阈值的删除
+def nan_drop(dataframe, n):
+    print(dataframe.count(axis=1))
+    dataframe.dropna(thresh=n)
+    return
+
+
 def load_data():
     """
     :return:
     """
-    path = os.path.dirname(os.path.realpath(__file__)) + '/data/data.csv'
-    df = pd.read_csv(path, encoding='gbk')
-    columns = df.columns
-    df.fillna(df.mean(), inplace=True)
-
+    path = os.getcwd()
+    df = pd.read_excel(path + '/data/daily.xlsx')
+    # 用上值补充空白值
+    df.fillna(method='ffill', inplace=True)
+    # 删除2000年前的数据
+    data_delete = df[df['date'] < datetime.datetime(2000, 1, 1)].index
+    df.drop(data_delete, inplace=True)
+    # 用下值将切片数据补充完整
+    df.fillna(method='bfill', inplace=True)
     return df
 
 
@@ -101,21 +115,23 @@ def nn_seq_ms(B):
     test = dataset[int(len(dataset) * 0.7):len(dataset)]
 
     def process(data, batch_size):
-        load = data[data.columns[1]]
-        load = load.tolist()
+        index_hs300 = data[data.columns[16]]
+        index_hs300 = index_hs300.tolist()
         data = data.values.tolist()
-        m, n = np.max(load), np.min(load)
-        load = (load - n) / (m - n)
+        m, n = np.max(index_hs300), np.min(index_hs300)
+        index_hs300 = (index_hs300 - n) / (m - n)
         seq = []
-        for i in range(len(data) - 24):
+        for i in range(len(data) - 30):
             train_seq = []
             train_label = []
-            for j in range(i, i + 24):
-                x = [load[j]]
-                for c in range(2, 8):
+            for j in range(i, i + 30):
+                x = [index_hs300[j]]
+                for c in range(1, 16):
+                    x.append(data[j][c])
+                for c in range(17, 30):
                     x.append(data[j][c])
                 train_seq.append(x)
-            train_label.append(load[i + 24])
+            train_label.append(index_hs300[i + 30])
             train_seq = torch.FloatTensor(train_seq)
             train_label = torch.FloatTensor(train_label).view(-1)
             seq.append((train_seq, train_label))

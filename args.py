@@ -37,7 +37,7 @@ def ms_args_parser():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--epochs', type=int, default=30, help='input dimension')
-    parser.add_argument('--input_size', type=int, default=7, help='input dimension')
+    parser.add_argument('--input_size', type=int, default=29, help='input dimension')
     parser.add_argument('--output_size', type=int, default=1, help='output dimension')
     parser.add_argument('--hidden_size', type=int, default=64, help='hidden size')
     parser.add_argument('--num_layers', type=int, default=1, help='num layers')

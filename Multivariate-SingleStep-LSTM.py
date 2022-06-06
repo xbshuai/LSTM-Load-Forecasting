@@ -10,7 +10,7 @@ import os
 from args import ms_args_parser
 from util import train, test
 
-path = os.path.abspath(os.path.dirname(os.getcwd()))
+path = os.getcwd()
 LSTM_PATH = path + '/model/Multivariate-SingleStep-LSTM.pkl'
 
 

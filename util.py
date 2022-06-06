@@ -8,6 +8,7 @@
 from itertools import chain
 
 import torch
+import pdb
 from scipy.interpolate import make_interp_spline
 from torch import nn
 import numpy as np
@@ -97,12 +98,14 @@ def test(args, path, flag):
             y_pred = list(chain.from_iterable(y_pred.data.tolist()))
             pred.extend(y_pred)
 
+    pdb.set_trace()
     y, pred = np.array(y), np.array(pred)
     m, n = lis2[0], lis2[1]
     y = (m - n) * y + n
     pred = (m - n) * pred + n
     print('mape:', get_mape(y, pred))
     # plot
+    '''
     x = [i for i in range(1, 151)]
     x_smooth = np.linspace(np.min(x), np.max(x), 900)
     y_smooth = make_interp_spline(x, y[150:300])(x_smooth)
@@ -110,6 +113,10 @@ def test(args, path, flag):
 
     y_smooth = make_interp_spline(x, pred[150:300])(x_smooth)
     plt.plot(x_smooth, y_smooth, c='red', marker='o', ms=1, alpha=0.75, label='pred')
+    '''
+    x = np.arange(len(y))
+    plt.plot(x, y, c='green', marker='*', ms=1, alpha=0.75, label='true')
+    plt.plot(x, pred, c='red', marker='o', ms=1, alpha=0.75, label='pred')
     plt.grid(axis='y')
     plt.legend()
     plt.show()
